@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php session_start(); ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    :root {
+        --roboto: 'Roboto', sans-serif;
+        --quicksand: 'Quicksand', sans-serif;
+        --width: 1160px;
+    }
+    
+    .container {
+        width: 1160px;
+        margin: 0 auto;
+    
+    }
+    
+    .top-list {
+        width: 100%;
+        height: 80px;
+    }
+    
+    .top-list ul {
+        margin-top: 36px;
+        list-style: none;
+        width: 500px;
+        display: flex;
+        justify-content: space-between;
+    
+    }
+    
+    .top-list ul li a {
+        text-decoration: none;
+        font-family: var(--quicksand);
+        font-weight: 700;
+        font-size: 15px;
+        color: #4a4a4a;
+    }
+    
+    .top-list .search {
+        float: right;
+        position: relative;
+        margin-top: -30px;
+    }
+    
+    .top-list .search input {
+        width: 362px;
+        height: 44px;
+        border: none;
+        outline: 1px solid #f2f4f6;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        font-size: 15px;
+        border-radius: 20px;
+        padding-left: 25px;
+    }
+    
+    .top-list .search button {
+        position: absolute;
+        right: 0px;
+        width: 70px;
+        height: 44px;
+        border-radius: 20px;
+        border: none;
+        background-color: #0674ec;
+        cursor: pointer;
+    }
+    
+    .top-list .search button img {
+        width: 15px;
+        height: 15px;
+    }
+    
+    header .blue {
+        width: 100%;
+        height: 725px;
+        background-color: #0930bb;
+    }
+    
+    header .blue h1 {
+        text-align: center;
+        font-size: 60px;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        color: #fff;
+        padding-top: 186px;
+    }
+    
+    header .blue h2 {
+        padding-top: 10px;
+        text-align: center;
+        font-size: 60px;
+        font-family: var(--quicksand);
+        font-weight: 700;
+        color: #fff;
+    }
+    
+    header .blue h3 {
+        text-align: center;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        color: #fff;
+        font-size: 20px;
+        margin-top: 50px;
+    }
+    
+    header .blue .buttons {
+        width: 416px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0px auto;
+        text-align: center;
+        margin-top: 70px;
+    }
+    
+    header .blue .buttons button {
+        width: 190px;
+        height: 55px;
+        border-radius: 30px;
+        background: none;
+        border: none;
+        outline: 1px solid #fff;
+        color: #fff;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 500ms;
+        transition-property: all;
+    }
+    
+    header .blue .buttons button:nth-child(2) {
+        background: none;
+        color: #fff;
+    }
+    
+    header .blue .buttons button:hover {
+        background: #fff;
+        color: #66aaf3;
+    }
+    
+    header .second-section {
+        width: 1140px;
+        height: 196px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    header .second-section .first {
+        width: 1080px;
+        height: 130px;
+        background-color: #fff;
+        opacity: .5;
+        position: absolute;
+        top: -100px;
+        border-radius: 10px;
+        left: 15px;
+        z-index: 1;
+    }
+    
+    header .second-section .second {
+        width: 1110px;
+        height: 130px;
+        opacity: .5;
+        background-color: #fff;
+        position: absolute;
+        top: -80px;
+        border-radius: 10px;
+        z-index: 2;
+    }
+    
+    header .second-section .third {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 132px;
+        position: absolute;
+        z-index: 3;
+        top: -70px;
+        left: -15px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2);
+    
+    }
+    
+    header .second-section .third input {
+        border: none;
+        outline: 1px solid #f3f3f3;
+        width: 613px;
+        height: 52px;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        font-size: 16px;
+        padding-left: 20px;
+        margin-top: 40px;
+        margin-left: 40px;
+    
+    }
+    
+    header .second-section .third select {
+        width: 195px;
+        height: 52px;
+        border: none;
+        outline: 1px solid #f3f3f3;
+        font-size: 16px;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        padding-left: 10px;
+        margin-top: 40px;
+        margin-left: -19px;
+    
+    }
+    
+    header .second-section .third button {
+        width: 226px;
+        height: 52px;
+        background-color: #0674ec;
+        color: #fff;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 500ms;
+        transition-property: all;
+        margin-top: 40px;
+        margin-right: 36px;
+    }
+    
+    header .second-section .third button:hover {
+        background-color: #eef1f3;
+        color: #147cec;
+    }
+    
+    header .simple-cards {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    header .simple-cards .card1 {
+        width: 380px;
+        height: 400px;
+        align-items: center;
+        text-align: center;
+        transition: 500ms;
+        transition-property: all;
+        cursor: pointer;
+    }
+    
+    header .simple-cards .card2 {
+        width: 380px;
+        height: 400px;
+        align-items: center;
+        text-align: center;
+        transition: 500ms;
+        transition-property: all;
+        cursor: pointer;
+    }
+    
+    header .simple-cards .card3 {
+        width: 380px;
+        height: 400px;
+        align-items: center;
+        text-align: center;
+        transition: 500ms;
+        transition-property: all;
+        cursor: pointer;
+    }
+    
+    header .simple-cards .card1 h2 {
+        padding-top: 36px;
+        font-family: var(--quicksand);
+        font-weight: 700;
+        color: #1c1c1c;
+        font-size: 24px;
+        padding-bottom: 35px;
+    }
+    
+    header .simple-cards .card2 h2 {
+        padding-top: 36px;
+        font-family: var(--quicksand);
+        font-weight: 700;
+        color: #1c1c1c;
+        font-size: 24px;
+        padding-bottom: 35px;
+    }
+    
+    header .simple-cards .card3 h2 {
+        padding-top: 36px;
+        font-family: var(--quicksand);
+        font-weight: 700;
+        color: #1c1c1c;
+        font-size: 24px;
+        padding-bottom: 35px;
+    }
+    
+    header .simple-cards .card1 p {
+        font-family: var(--quicksand);
+        font-weight: 700;
+        font-size: 16px;
+        color: #4f4f4f;
+        line-height: 30px;
+    }
+    
+    header .simple-cards .card2 p {
+        font-family: var(--quicksand);
+        font-weight: 700;
+        font-size: 16px;
+        color: #4f4f4f;
+        line-height: 30px;
+    }
+    
+    header .simple-cards .card3 p {
+        font-family: var(--quicksand);
+        font-weight: 700;
+        font-size: 16px;
+        color: #4f4f4f;
+        line-height: 30px;
+    }
+    
+    header .simple-cards .card1:hover {
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transform: translateY(-20px);
+    }
+    
+    header .simple-cards .card2:hover {
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transform: translateY(-20px);
+    }
+    
+    header .simple-cards .card3:hover {
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transform: translateY(-20px);
+    }
+    .language {
+    font-family: var(--quicksand);
+    font-size: 16px;
+    color: #333;
+    margin-left: 15px;
+    text-decoration: none;
+}
+.price-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.separator {
+    margin: 0 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.slider {
+    width: 100%;
+    position: relative;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.progress {
+    height: 100%;
+    background: #4caf50;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.range-input input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    background: transparent;
+    outline: none;
+    height: 10px;
+    margin: 0;
+}
+
+.range-input input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.range-input input[type="range"]::-webkit-slider-thumb:hover {
+    background: #45a049;
+}
+
+.range-input input[type="range"]::-webkit-slider-thumb:active {
+    background: #3e8e41;
+}
+
+.range-input,
+.price-input {
+    text-align: center;
+    font-family: var(--quicksand);
+    font-size: 16px;
+    color: #333;
+}
+
+.range-input h2,
+.range-input p {
+    margin: 0;
+}
+
+.field span {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #555;
+}
+
+.price-input h2,
+.price-input p {
+    font-family: var(--quicksand);
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.field span {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #555;
+}
+.slide {
+    text-align: center;
+    font-family: var(--quicksand);
+    font-size: 22px;
+    color: #333;
+}
+.slide2 {
+    text-align: center;
+    font-family: var(--quicksand);
+    font-size: 24px;
+    color: #333;
+}
+
+    .starss {
+        margin-right: 20px;
+    }
+    .product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: inline-block;
+    width: 48%;
+    margin-right: 1%;
+    box-sizing: border-box;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+/* Add the following styles for better fonts and redesigned button */
+.product-title {
+    font-family: var(--quicksand);
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-family: var(--quicksand);
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.product-price {
+    font-family: var(--quicksand);
+    color: #e44d26;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: #e44d26;
+    color: #fff;
+    font-family: var(--quicksand);
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #333;
+}
+.cart {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    font-family: var(--quicksand);
+    font-size: 16px;
+}
+
+.cart h2 {
+    font-family: var(--quicksand);
+    font-size: 24px;
+}
+
+.cart-content {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.cart p {
+    margin: 10px 0;
+}
+
+.clear-cart-btn, .checkout-btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.clear-cart-btn:hover, .checkout-btn:hover {
+    background-color: #2980b9;
+}
+
+.featuerd {
+    font-family: var(--quicksand);
+    color: #555;
+    line-height: 1.5;
+}
+    
+    /*  section end 
+    article start
+    */
+    #centrArticle {
+        width: 1160px;
+        margin: auto;
+    
+    }
+    
+    article .articleTopPart {
+        text-align: center;
+        font-family: var(--quicksand);
+        margin-top: 127px;
+    }
+    
+    article .articleTopPart h1 span {
+        color: #0674ec;
+    }
+    
+    article .articleTopPart h1 {
+        font-size: 36px;
+        font-weight: 400;
+    }
+    
+    article .articleTopPart p {
+        margin-top: 40px;
+        font-size: 16px;
+        line-height: 32px;
+        margin-bottom: 60px;
+    }
+    
+    /* top part end now */
+    .articleMiddlePart {
+        width: 100%;
+    
+    }
+    
+    .middleboxs {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    
+    }
+    
+    .middleboxs:nth-child(2) {
+        margin-top: 32px;
+        margin-bottom: 120px;
+    }
+    
+    .middlebox {
+        width: 363px;
+        height: 374px;
+        box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: .5;
+        transition-property: all;
+        transition-duration: .5s;
+    
+    }
+    
+    .middlebox:hover {
+        transform: translateY(-20px);
+    }
+    
+    .middlebox h1 {
+        font-family: var(--quicksand);
+        font-size: 48px;
+        color: #5c87f8;
+        opacity: .2;
+        font-weight: 400;
+        margin-left: -260px;
+        margin-top: 5px;
+    }
+    
+    .middlebox h2 {
+        margin-top: 56px;
+        font-family: var(--quicksand);
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 38px;
+    }
+    
+    .middlebox p {
+        font-family: var(--quicksand);
+        font-size: 16px;
+        line-height: 20px;
+    }
+    
+    /*  article middle part end */
+    
+    .articleBottomPart {
+        width: 100wv;
+        display: flex;
+    }
+    
+    .articleBleft {
+        width: 50vw;
+        text-align: center;
+        background-color: #0674ec;
+    }
+    
+    .articleBleft img {
+        margin-top: 130px;
+    }
+    
+    .articleBleft h1 {
+        font-family: var(--quicksand);
+        font-size: 36px;
+        font-weight: 400;
+        color: #fff;
+        margin-top: 28px;
+        margin-bottom: 38px;
+    }
+    
+    .articleBleft p {
+        color: #fff;
+        font-weight: 400;
+        font-family: var(--quicksand);
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    
+    .articleBleft button {
+        width: 192px;
+        height: 60px;
+        border-radius: 50px;
+        border: none;
+        color: #0930bb;
+        font-size: 16px;
+        font-family: var(--quicksand);
+        cursor: pointer;
+    }
+    
+    /* right side */
+    .articleBright img {
+        margin-top: 130px;
+    }
+    
+    .articleBright {
+        width: 50vw;
+        text-align: center;
+        background-color: #7347c1;
+    }
+    
+    .articleBright h1 {
+        font-family: var(--quicksand);
+        font-size: 36px;
+        font-weight: 400;
+        color: #fff;
+        margin-top: 28px;
+        margin-bottom: 38px;
+    }
+    
+    .articleBright p {
+        color: #fff;
+        font-weight: 400;
+        font-family: var(--quicksand);
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    
+    .articleBright button {
+        width: 192px;
+        height: 60px;
+        border-radius: 50px;
+        border: none;
+        color: #7347c1;
+        font-size: 16px;
+        font-family: var(--quicksand);
+        cursor: pointer;
+        margin-bottom: 60px;
+    }
+    
+    /* article bottom end  */
+    .feedbacktop {
+        text-align: center;
+    }
+    
+    .feedbacktop h1 {
+        font-family: var(--quicksand);
+        font-size: 36px;
+        font-weight: 400;
+        margin-top: 120px;
+        margin-bottom: 40px;
+    }
+    
+    .feedbacktop h1 span {
+        color: #0930bb;
+    }
+    
+    .feedbacktop p {
+        font-family: var(--quicksand);
+        font-weight: 400;
+        color: #555555;
+        font-size: 16px;
+        margin-bottom: 65px;
+    }
+    
+    /*  feedback top end*/
+    .feedbackcenter {
+        width: 100%;
+        display: flex;
+    }
+    
+    .feedbackcenter .feedbackleft {
+        width: 552px;
+        height: 320px;
+        box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2);
+        border-left: 2px solid #0930bb;
+    }
+    
+    .feedbackleftTop {
+        margin-top: 47px;
+        position: relative;
+        display: flex;
+    }
+    
+    .feedbackleftTop .avatarcircle {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #555555;
+        left: 40px;
+    }
+    
+    /* ......................... */
+    .feedbackleftTop h1 {
+        position: absolute;
+        font-family: var(--quicksand);
+        font-size: 20px;
+        left: 140px;
+        top: 17px;
+    }
+    
+    .feedbackleftTop h2 {
+        position: absolute;
+        top: 45px;
+        left: 138px;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        font-size: 16px;
+        color: #555555;
+    }
+    
+    .feedbackleftTop img {
+        position: absolute;
+        right: 41px;
+    }
+    
+    .feedbackleft p {
+        margin-top: 134px;
+        margin-left: 40px;
+        font-size: 16px;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        line-height: 30px;
+    }
+    
+    /*   right */
+    .feedbackcenter .feedbackright {
+        width: 552px;
+        height: 320px;
+        box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2);
+        border-left: 2px solid #0930bb;
+    }
+    
+    .feedbackrightTop {
+        margin-top: 47px;
+        position: relative;
+        display: flex;
+    }
+    
+    .feedbackrightTop .avatarcircle {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #555555;
+        left: 40px;
+    }
+    
+    /* ......................... */
+    .feedbackrightTop h1 {
+        position: absolute;
+        font-family: var(--quicksand);
+        font-size: 20px;
+        left: 140px;
+        top: 17px;
+    }
+    
+    .feedbackrightTop h2 {
+        position: absolute;
+        top: 45px;
+        left: 138px;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        font-size: 16px;
+        color: #555555;
+    }
+    
+    .feedbackrightTop img {
+        position: absolute;
+        right: 41px;
+    }
+    
+    .feedbackright p {
+        margin-top: 134px;
+        margin-left: 40px;
+        font-size: 16px;
+        font-family: var(--quicksand);
+        font-weight: 400;
+        line-height: 30px;
+    }
+    
+    .centerProductsButton {
+        text-align: center;
+    }
+    
+    .centerProductsButton button {
+        width: 190px;
+        height: 55px;
+        border: none;
+        font-size: 16px;
+        border-radius: 50px;
+        color: #fff;
+        background-color: #0930bb;
+        font-weight: 400;
+        margin-left: -10px;
+        margin-top: 60px;
+        cursor: pointer;
+        margin-bottom: 120px;
+    }
+    
+    /*  article end */
+    /*  main start */
+    .mainCenter {
+        width: 1140px;
+        margin: auto;
+    }
+    
+    .mainTopPart {
+        width: 100%;
+        height: 883px;
+        background-color: #eff1f5;
+    }
+    
+    .mainTopPart h1 {
+        padding-top: 127px;
+        font-weight: 400;
+        text-align: center;
+        font-family: var(--quicksand);
+        font-size: 36px;
+    }
+    
+    .mainTopPart h1 span {
+        color: #0930bb;
+        font-weight: 400;
+    }
+    
+    .mainTopPart p {
+        text-align: center;
+        font-family: var(--quicksand);
+        font-size: 16px;
+        margin-top: 40px;
+        margin-bottom: 64px;
+    }
+    
+ 
+    footer {
+        width: 100%;
+        height: 610px;
+        background-color: #262b30;
+    }
+    
+    .footercenter {
+        width: 1160px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .foot1 {
+        margin-top: 130px;
+        width: 271px;
+    }
+    
+    .foot1 .foot1Top {
+        width: 165px;
+        display: flex;
+    }
+    
+    .foot1 .foot1Top h2 {
+        padding-top: 5px;
+        padding-left: 3px;
+        font-family: var(--quicksand);
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+    }
+    
+    .foot1 .foot1Top h2 span {
+        color: #0930bb;
+    }
+    
+    .foot1 p {
+        margin-top: 45px;
+        font-family: var(--quicksand);
+        color: #ababab;
+        font-size: 15px;
+        line-height: 30px;
+    }
+    
+    .footphone {
+        margin-top: 36px;
+        font-family: var(--quicksand);
+        width: 220px;
+        justify-content: space-between;
+        display: flex;
+        font-size: 15px;
+        color: #ababab;
+    }
+    
+    .footphone h3 {
+        font-weight: 400;
+    }
+    
+    /* phone tag */
+    .footmessage {
+        position: relative;
+        margin-top: 25px;
+        height: 13px;
+        font-family: var(--quicksand);
+        width: 220px;
+        justify-content: space-between;
+        display: flex;
+        font-size: 15px;
+        color: #ababab;
+    }
+    
+    .footmessage h3 {
+        font-weight: 400;
+        margin-left: 31px;
+    }
+    
+    .footmessage img {
+        position: absolute;
+        left: 0;
+        top: 8px;
+    }
+    
+    /* location */
+    .footerlocation {
+        margin-top: 30px;
+        position: relative;
+    
+    }
+    
+    .footerlocation h3 {
+        margin-left: 31px;
+        font-size: 15px;
+        font-weight: 400;
+        font-family: var(--quicksand);
+        color: #ababab;
+        line-height: 30px;
+    }
+    
+    .footerlocation img {
+        position: absolute;
+        left: 0;
+        top: 20px;
+    }
+    
+    .foot2 h2 {
+        margin-top: 140px;
+        font-size: 20px;
+        font-weight: 400;
+        font-family: var(--quicksand);
+        color: #fff;
+        margin-bottom: 40px;
+    }
+    
+    .foot2 ul {
+        list-style: none;
+        font-family: var(--quicksand);
+        font-size: 15px;
+        font-weight: 400;
+        color: #ababab;
+    }
+    
+    .foot2 ul li {
+        padding-top: 20px;
+    }
+    
+    .foot2 ul li a {
+        text-decoration: none;
+        color: #ababab;
+    }
+    
+    /*  foot2 */
+    .foot3 h2 {
+        margin-top: 140px;
+        font-size: 20px;
+        font-weight: 400;
+        font-family: var(--quicksand);
+        color: #fff;
+        margin-bottom: 40px;
+    }
+    
+    .foot3 ul {
+        list-style: none;
+        font-family: var(--quicksand);
+        font-size: 15px;
+        font-weight: 400;
+        color: #ababab;
+    }
+    
+    .foot3 ul li {
+        padding-top: 20px;
+    }
+    .foot3 ul li a {
+        text-decoration: none;
+        color: #ababab;
+    }
+    /*  f33 */
+    .foot4 h2 {
+        margin-top: 140px;
+        font-size: 20px;
+        font-weight: 400;
+        font-family: var(--quicksand);
+        color: #fff;
+        margin-bottom: 55px;
+        line-height: 30px;
+    }
+    .foot4 h3{
+        margin-top: 10px;
+        font-family: var(--quicksand);
+        font-size: 15px;
+        font-weight: 400;
+        color: #ababab;
+        margin-bottom: 48px;
+    
+    }
+    .foot4 form{
+        position: relative;
+    }
+    .foot4 form input{
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        width: 293px;
+        height: 50px;
+        border-radius: 40px;
+        border: none;
+        outline: none;
+        padding-left: 35px;
+        font-size: 15px;
+        font-family: var(--quicksand);
+    
+    }
+    .foot4 form button{
+        position: absolute;
+        z-index: 2;
+        width: 112px;
+        height: 50px;
+        border-radius: 40px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: #0674ec;
+        left: 250px;
+        font-family: var(--quicksand);
+        color: #fff;
+        font-size: 15px;
+    }
+    /* icons */
+    .foot4 ul{
+        list-style: none;
+        margin-top: 170px;
+        width: 320px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .foot4 ul li{
+        position: relative;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background-color: #395799;    
+    }
+    .foot4 ul li:nth-child(2){
+        background-color: #19b2f5;
+    }
+    .foot4 ul li:nth-child(3){
+        background-color: #f05b44;
+    }
+    .foot4 ul li:nth-child(4){
+        background-color: #9c0c1c;
+    }
+    .foot4 ul li:nth-child(5){
+        background-color: #0da6be;
+    }
+    .foot4 ul li:nth-child(6){
+        background-color: #ea4c89;
+    }
+    .foot4 ul li a{
+        position: absolute;
+        left: 15px;
+        top: 13px;
+    }
+    /* copyrighter */
+    .footercopyrighter{
+        width: 100%;
+        height: 90px;
+        background-color: #192027;
+        margin-top: 102px;
+        text-align: center;
+        
+    }
+    .footercopyrighter p{
+        padding-top: 42px;
+        font-family: var(--quicksand);
+        color: #ababab;
+        font-size: 15px;
+    }
+    .footercopyrighter p span{
+        color: #fff;
+    }
+    
+    /* end here */
+    
+    @media screen and (max-width: 700px) {
+    .mainTopPart p {
+        font-size: 14px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    footer {
+        height: auto;
+    }
+
+    .footercenter {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .foot1,
+    .foot2,
+    .foot3,
+    .foot4 {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .foot1 .foot1Top h2 {
+        font-size: 20px;
+    }
+
+    .foot2 h2,
+    .foot3 h2,
+    .foot4 h2 {
+        font-size: 18px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .foot4 form input,
+    .foot4 form button {
+        width: 100%;
+        margin-top: 10px;
+        left: 0;
+    }
+
+    .foot4 ul {
+        margin-top: 30px;
+    }
+
+    .footercopyrighter {
+        margin-top: 30px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="top-list">
+            <div class="container">
+                <ul>
+                    <li><a href="new_website.html">Домашняя страница</a></li>
+                    <li><a href="#">продукты</a></li>
+                    <li><a href="index.html">Регистрация</a></li>
+                    <li><a href="sign.html">Войти</a></li>
+                    <li><a href="qaz.html" class="language">QAZ</a></li>
+                    <li><a href="new_website copy.html" class="language">RUS</a></li>
+                    <li><?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="sign.php"><?php echo $_SESSION['user_name']; ?></a>
+                        <?php endif; ?>
+                </ul>
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Search product here..." oninput="searchProducts()">
+                    <button type="submit" onclick="eraseSearch()">Очистить</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="simple-cards">
+                <div class="card1">
+                    <h2>Структурированный макет</h2>
+                    <p>Магазин имеет хорошо организованный и структурированный макет. Это выгодно как для пользователей, так и для разработчиков, поскольку повышает читаемость, удобство сопровождения
+                        и простоту понимания структуры страницы. Четкая структура упрощает поиск и изменение определенных элементов при необходимости.</p>
+                </div>
+                <div class="card2">
+                    <h2>Полностью отзывчивый</h2>
+                    <p>Магазин включает элементы адаптивного дизайна. Адаптивный дизайн гарантирует, что макет адаптируется к различным размерам экрана и устройствам. 
+                        Это имеет решающее значение для обеспечения единообразного и удобного взаимодействия с пользователем на различных платформах, включая настольные компьютеры, планшеты и мобильные устройства</p>
+                </div>
+                <div class="card3">
+                    <h2>Привлекательные визуальные элементы</h2>
+                    <p>Магазин включает в себя визуально привлекательные элементы, такие как изображения, иконки и градиенты. Эти элементы способствуют общей эстетике страницы и могут повысить вовлеченность пользователей.
+                        Визуальная привлекательность важна для привлечения пользователей и поддержания их интереса к изучению контента</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="wrapper">
+            <header>
+              <h2 class="slide2">Шкала цен</h2>
+              <p class="slide">Используйте ползунок или введите минимальную и максимальную цену</p>
+            </header>
+            <div class="price-input">
+              <div class="field">
+                <span>Min</span>
+                <input type="number" class="input-min" value="2500">
+              </div>
+              <div class="separator">-</div>
+              <div class="field">
+                <span>Max</span>
+                <input type="number" class="input-max" value="7500">
+              </div>
+            </div>
+            <div class="slider">
+              <div class="progress"></div>
+            </div>
+            <div class="range-input">
+              <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+              <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+            </div>
+          </div>
+    </section>
+    <section>
+        <h2 class="featuerd">Продукты</h2>
+        <div name = "chocolate" class="product">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Green_and_Black%27s_dark_chocolate_bar_2.jpg" alt="Chocolate Bar">
+            <h3 class="product-title">Плитка темного шоколада премиум-класса</h3>
+            <p class="product-description">Насладитесь изысканным вкусом нашей плитки темного шоколада премиум-класса. Идеально подходит для удовлетворения вашей тяги к сладкому.</p>
+            <p class="product-price">Price: ₸350</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Premium Dark Chocolate Bar', 350)">Добавить в корзину</button>
+        </div>
+
+            <div class="product">
+                <img src="https://www.allrecipes.com/thmb/iRcip7RaCHF_RmbzDV4bC8gqNYs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-504780334-2000-1caaee9e697c40a8935db7b8d9818a85.jpg" alt="Cheese">
+                <h3 class="product-title">Сыр</h3>
+                <p class="product-description">Украсьте свои кулинарные творения нашим лучшим сыром. Универсальный ингредиент для различных блюд.</p>
+                <p class="product-price">Price: ₸1500</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Cheese', 1500)">Добавить в корзину</button>
+            </div>
+
+            <div class="product">
+                <img src="https://www.parents.com/thmb/qKThoOlGAzJwGZ-moTTGQVFRvhg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Grass-Fed-vs-Organic-Milk-9fff118133c14e578c2379ed86888817.jpg" alt="Milk">
+                <h3 class="product-title">Молоко</h3>
+                <p class="product-description">Натуральное молоко. 15%</p>
+                <p class="product-price">Price: ₸500</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Milk', 500)">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <img src="https://sugarspunrun.com/wp-content/uploads/2020/03/Homemade-Bread-Recipe-1-of-1-2-300x300.jpg" alt="Bread">
+                <h3 class="product-title">Bread</h3>
+                <p class="product-description">Свежий хлеб</p>
+                <p class="product-price">Price: ₸200</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Bread', 200)">Добавить в корзину</button>
+            </div>
+
+            <div class="product">
+                <img src="https://buttercreamparty.com/wp-content/uploads/2020/06/butter-300x300.jpg" alt="Butter">
+                <h3 class="product-title">Масло</h3>
+                <p class="product-description">Ощутите классическую насыщенность сливочного масла нашего магазина премиум-класса. Приготовленное из высококачественных сливок, оно идеально подходит для намазывания на тосты, выпечки или придания пикантности вашим любимым рецептам.</p>
+                <p class="product-price">Price: ₸1200</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Butter', 1200)">Добавить в корзину</button>
+            </div>
+
+            <div class="product">
+                <img src="https://www.sagefruit.com/wp-content/uploads/2016/08/Gala-300x300.png" alt="Apple">
+                <h3 class="product-title">Яболко</h3>
+                <p class="product-description">Яблоко натурального производства. Цена за килограмм</p>
+                <p class="product-price">Price: ₸400</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Apple', 400)">Добавить в корзину</button>
+            </div>
+    </section>
+    <div class="cart">
+        <h2>Корзина</h2>
+        <div id="cartContent" class="cart-content"></div>
+        <p class="total">Total: ₸<span id="totalPrice">0</span></p>
+        <button class="clear-cart-btn" onclick="clearCart()">Очистить корзину</button>
+        <button class="checkout-btn" onclick="checkout()">Проверка</button>
+    </div>
+    <article>
+        <div id="centrArticle">
+            <div class="feedbacktop">
+                <h1>
+                    Наши клиенты <span>Отзывы</span>
+                </h1>
+            </div>
+            <!-- bottom edn -->
+            <div class="feedbackcenter">
+                <div class="feedbackleft">
+                    <div class="feedbackleftTop">
+                        <div class="avatarcircle"></div>
+                        <h1>Aigerim</h1>
+                        <h2>Software developer</h2>
+                        <img src="bubble-message.png" alt="">
+                    </div>
+                    <p>As a software developer, I've had the pleasure of exploring various online marketplaces for high-quality design assets. MartPlace stands out with its intuitive user interface and a vast selection of products. 
+                        The seamless payment process and organized code snippets in the products I purchased have significantly boosted my project development speed. The responsive support team is an added bonus, making MartPlace my go-to platform for all my coding needs. Highly recommended!</p>
+                </div>
+                <div class="feedbackright">
+                    <div class="feedbackrightTop">
+                        <div class="avatarcircle"></div>
+                        <h1>Nursultan</h1>
+                        <h2>Graphic Designer</h2>
+                        <img src="bubble-message.png" alt="">
+                    </div>
+                    <p>As a software developer, I've had the pleasure of exploring various online marketplaces for high-quality design assets. MartPlace stands out with its intuitive user interface and a vast selection of products.
+                       The seamless payment process and organized code snippets in the products I purchased have significantly boosted my project development speed. The responsive support team is an added bonus, making MartPlace my go-to platform for all my coding needs. Highly recommended!</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script>
+        let cart = [];
+
+function addToCart(productName, productPrice) {
+    cart.push({ name: productName, price: productPrice });
+    updateCartDisplay();
+}
+
+function removeFromCart(index) {
+    const removedItem = cart.splice(index, 1)[0];
+    updateCartDisplay();
+}
+
+function clearCart() {
+    cart = [];
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartContentElement = document.getElementById('cartContent');
+    const totalPriceElement = document.getElementById('totalPrice');
+
+    cartContentElement.innerHTML = '';
+    cart.forEach((item, index) => {
+        cartContentElement.innerHTML += `${item.name} - ₸${item.price} 
+        <button onclick="removeFromCart(${index})">Remove</button><br>`;
+    });
+
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    totalPriceElement.textContent = totalPrice;
+}
+        function searchProducts() {
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
+    var products = document.querySelectorAll('.product');
+
+    products.forEach(function(product) {
+        var productName = product.querySelector('h3').innerText.toLowerCase();
+        if (productName.includes(searchText)) {
+            product.style.display = 'inline-block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+function filterProducts(searchText) {
+    const products = document.querySelectorAll('.product');
+    products.forEach(product => {
+        const productName = product.querySelector('h3').textContent.toLowerCase();
+        if (productName.includes(searchText.toLowerCase())) {
+            product.style.display = '';
+        } else {
+            product.style.display = 'none';
+        }
+    });}
+
+function eraseSearch() {
+    document.getElementById('searchInput').value = '';
+    var products = document.querySelectorAll('.product');
+    products.forEach(function(product) {
+        product.style.display = 'inline-block';
+    });
+    document.querySelector('.search-input').value = '';
+    filterProducts('');
+}
+const rangeInput = document.querySelectorAll(".range-input input"),
+priceInput = document.querySelectorAll(".price-input input"),
+range = document.querySelector(".slider .progress");
+let priceGap = 1000;
+
+priceInput.forEach(input =>{
+    input.addEventListener("input", e =>{
+        let minPrice = parseInt(priceInput[0].value),
+        maxPrice = parseInt(priceInput[1].value);
+        
+        if((maxPrice - minPrice >= priceGap) && maxPrice <= rangeInput[1].max){
+            if(e.target.className === "input-min"){
+                rangeInput[0].value = minPrice;
+                range.style.left = ((minPrice / rangeInput[0].max) * 100) + "%";
+            }else{
+                rangeInput[1].value = maxPrice;
+                range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+            }
+        }
+    });
+});
+
+rangeInput.forEach(input =>{
+    input.addEventListener("input", e =>{
+        let minVal = parseInt(rangeInput[0].value),
+        maxVal = parseInt(rangeInput[1].value);
+
+        if((maxVal - minVal) < priceGap){
+            if(e.target.className === "range-min"){
+                rangeInput[0].value = maxVal - priceGap
+            }else{
+                rangeInput[1].value = minVal + priceGap;
+            }
+        }else{
+            priceInput[0].value = minVal;
+            priceInput[1].value = maxVal;
+            range.style.left = ((minVal / rangeInput[0].max) * 100) + "%";
+            range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+        }
+    });
+});
+function filterProductsByPrice(minPrice, maxPrice) {
+    const products = document.querySelectorAll('.product');
+    products.forEach(product => {
+        const productPrice = parseInt(product.querySelector('.product-price').innerText.split('₸')[1]);
+
+        if (productPrice >= minPrice && productPrice <= maxPrice) {
+            product.style.display = 'inline-block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+document.querySelectorAll('.range-input input').forEach(input => {
+    input.addEventListener('input', () => {
+        const minPrice = parseInt(document.querySelector('.range-min').value);
+        const maxPrice = parseInt(document.querySelector('.range-max').value);
+        filterProductsByPrice(minPrice, maxPrice);
+    });
+});
+
+      </script>
+      
+    <footer>
+        <div class="footercenter">
+                        
+            <div class="foot1">
+                <div class="foot1Top">
+                    <h2>Market<span>Place</span></h2>
+                </div>
+                <div class="footphone">
+                    <img src="footerphone.png" alt="">
+                    <h3>Телефонный номер: +6789-875-2235</h3>
+                </div>
+                <div class="footmessage">
+                    <img src="footermessage.png" alt="">
+                    <h3>suppor@aazztech.com</h3>
+                </div>
+                <div class="footerlocation">
+                    <img src="footerlocation.png" alt="">
+                    <h3>202 Нью-Гэмпшир авеню
+                        Северо-Запад #100, Нью-Йорк-2573
+                    </h3>
+                </div>
+            </div>
+            <div class="foot2">
+                <h2>Наша компания</h2>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Как это работает</a></li>
+                    <li><a href="#">Филиалы</a></li>
+                    <li><a href="#">Рекомендации</a></li>
+                    <li><a href="#">Связь с нами</a></li>
+                    <li><a href="#">Уведомление об авторских правах</a></li>
+                    <li><a href="#">Блог</a></li>
+                </ul>
+            </div>
+            <div class="foot3">
+                <h2>Помощь</h2>
+                <ul>
+                    <li><a href="#">Форум</a></li>
+                    <li><a href="#">Правила и условия</a></li>
+                    <li><a href="#">Политика поддержки</a></li>
+                    <li><a href="#">Политика возврата денежных средств</a></li>
+                    <li><a href="#">Часто задаваемые вопросы</a></li>
+                </ul>
+            </div>
+            <div class="foot4">
+                <h2>Новостная рассылка</h2>
+                <h3>Подпишитесь, чтобы получать последние новости, обновления и информацию о предложениях. Не волнуйтесь, мы не будем рассылать спам!</h3>
+                <form action="#">
+                    <input type="email" placeholder="Enter email " required>
+                    <button type="submit">Отправить</button>
+                </form>
+                <ul>
+                    <li><a href="#"><img src="facebook.png" alt=""></a></li>
+                    <li><a href="#"><img src="twiter.png" alt=""></a></li>
+                    <li><a href="#"><img src="google.png" alt=""></a></li>
+                    <li><a href="#"><img src="picaso.png" alt=""></a></li>
+                    <li><a href="#"><img src="linkid.png" alt=""></a></li>
+                    <li><a href="#"><img src="basketboll.png" alt=""></a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footercopyrighter">
+            <p>©2024 <span>Market</span>. All rights reserved. Created by <span>yernur</span></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
